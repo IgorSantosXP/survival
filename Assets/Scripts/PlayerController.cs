@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxAngle = 90f;
     [SerializeField] private float retargetSpeed = 5f;
     [SerializeField] private float aimWeightSpeed = 2f;
+    [SerializeField] private InventoryObject inventory;
+    [SerializeField] private ScreenManager screenManager;
 
     private Vector3 hitPos;
     private Vector3 inputDir;
@@ -57,12 +59,25 @@ public class PlayerController : MonoBehaviour
         {
             inputVector.x = +1;
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (!screenManager.isInventoryOpen)
         {
-            isCombatMode = true;
-            combatModeTimer = 3f;
-            animator.SetTrigger(punch);  
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                isCombatMode = true;
+                combatModeTimer = 3f;
+                animator.SetTrigger(punch);
+            }
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            inventory.Save();
+        }
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            inventory.Load();
+        }
+
         inputVector = inputVector.normalized;
         inputDir = new Vector3(inputVector.x, 0f, inputVector.y);
     }
@@ -78,32 +93,32 @@ public class PlayerController : MonoBehaviour
 
         moveDir = cameraForward * inputDir.z + cameraRight * inputDir.x;
         float moveDistance = moveSpeed * Time.deltaTime;
-        float playerRadius = .5f;
-        float playerHeight = 2f;
-        bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDir, moveDistance);
+        //float playerRadius = .5f;
+        //float playerHeight = 2f;
+        //bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDir, moveDistance);
 
-        if (!canMove)
-        {
-            Vector3 moveDirX = new Vector3(moveDir.x, 0, 0).normalized;
-            canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirX, moveDistance);
-            if (canMove)
-            {
-                moveDir = moveDirX;
-            } else
-            {
-                Vector3 moveDirZ = new Vector3(0, 0, moveDir.z).normalized;
-                canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirZ, moveDistance);
+        //if (!canMove)
+        //{
+        //    Vector3 moveDirX = new Vector3(moveDir.x, 0, 0).normalized;
+        //    canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirX, moveDistance);
+        //    if (canMove)
+        //    {
+        //        moveDir = moveDirX;
+        //    } else
+        //    {
+        //        Vector3 moveDirZ = new Vector3(0, 0, moveDir.z).normalized;
+        //        canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirZ, moveDistance);
 
-                if (canMove)
-                {
-                    moveDir = moveDirZ;
-                }
-            }
-        }
-        if (canMove)
-        {
+        //        if (canMove)
+        //        {
+        //            moveDir = moveDirZ;
+        //        }
+        //    }
+        //}
+        //if (canMove)
+        //{
             transform.position += moveDir * moveDistance;
-        }
+        //}
     }
 
     private void SetDirection()
@@ -173,5 +188,20 @@ public class PlayerController : MonoBehaviour
             lookDir.y = 0;
             transform.LookAt(transform.position + lookDir, Vector3.up);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var item = other.GetComponent<GroundItem>();
+        if (item)
+        {
+            inventory.AddItem(new Item(item.item), 1);
+            Destroy(other.gameObject);
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        inventory.Container.Items = new InventorySlot[35];
     }
 }
