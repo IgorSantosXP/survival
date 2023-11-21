@@ -6,6 +6,7 @@ public enum ItemType
 {
     Food,
     Equipment,
+    Resource,
     Default
 }
 

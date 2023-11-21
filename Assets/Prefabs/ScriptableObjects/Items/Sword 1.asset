@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7419c8eac5a35540aab7c00ce3843bf, type: 3}
   m_Name: Sword 1
   m_EditorClassIdentifier: 
-  Id: 0
+  Id: 2
   uiDisplay: {fileID: -6763620941933801878, guid: d07b803c54ae9fb4ebfc1e8a13b12f4c,
     type: 3}
   type: 1
   description: 
   buffs:
-  - attributes: 2
+  - attribute: 0
     value: 0
     min: 1
     max: 20

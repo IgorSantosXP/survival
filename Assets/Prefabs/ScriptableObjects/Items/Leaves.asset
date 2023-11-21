@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 346d7307bc612a64c822f0f2a7e00415, type: 3}
-  m_Name: Bones
+  m_Script: {fileID: 11500000, guid: 4af57d81f9cdb2a4d93eb3f35c2b50b4, type: 3}
+  m_Name: Leaves
   m_EditorClassIdentifier: 
-  Id: 5
-  uiDisplay: {fileID: 1660957820977104790, guid: d07b803c54ae9fb4ebfc1e8a13b12f4c,
-    type: 3}
+  Id: 7
+  uiDisplay: {fileID: 21300000, guid: 75215be9eab349c47a93c8228d34b0dc, type: 3}
   type: 2
   description: 
   buffs: []
