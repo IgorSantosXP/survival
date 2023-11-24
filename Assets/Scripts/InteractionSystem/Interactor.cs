@@ -8,7 +8,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private float _interactionPointRadius = 1f;
     [SerializeField] private LayerMask _interactableMask;
     [SerializeField] private int _numFound;
-    [SerializeField] private InventoryObject inventory;
+    [SerializeField] private InventoryController inventory;
 
     private readonly Collider[] _colliders = new Collider[3];
     private IInteractable _interactable;

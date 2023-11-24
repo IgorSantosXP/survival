@@ -203,7 +203,7 @@ Transform:
   - {fileID: 7142133124961560871}
   - {fileID: 8069360420728307605}
   - {fileID: 8132124584743307354}
-  - {fileID: 2253515029399068850}
+  - {fileID: 9211994073345795081}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -378,7 +378,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1001 &7631436571765437479
+--- !u!1001 &682800116751577244
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -390,11 +390,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: InteractableObjectCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 1626497121680005188, guid: f4795cbf1f1bb3649bfea3b3304379a6,
-        type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8551870443354920085, guid: f4795cbf1f1bb3649bfea3b3304379a6,
         type: 3}
@@ -434,12 +429,12 @@ PrefabInstance:
     - target: {fileID: 8551870443354920085, guid: f4795cbf1f1bb3649bfea3b3304379a6,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1237.9615
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 8551870443354920085, guid: f4795cbf1f1bb3649bfea3b3304379a6,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8551870443354920085, guid: f4795cbf1f1bb3649bfea3b3304379a6,
         type: 3}
@@ -484,7 +479,7 @@ PrefabInstance:
     - target: {fileID: 8551870443354920085, guid: f4795cbf1f1bb3649bfea3b3304379a6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.579
+      value: 1.65
       objectReference: {fileID: 0}
     - target: {fileID: 8551870443354920085, guid: f4795cbf1f1bb3649bfea3b3304379a6,
         type: 3}
@@ -506,9 +501,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4795cbf1f1bb3649bfea3b3304379a6, type: 3}
---- !u!224 &2253515029399068850 stripped
+--- !u!224 &9211994073345795081 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8551870443354920085, guid: f4795cbf1f1bb3649bfea3b3304379a6,
     type: 3}
-  m_PrefabInstance: {fileID: 7631436571765437479}
+  m_PrefabInstance: {fileID: 682800116751577244}
   m_PrefabAsset: {fileID: 0}

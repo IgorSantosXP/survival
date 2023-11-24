@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxAngle = 90f;
     [SerializeField] private float retargetSpeed = 5f;
     [SerializeField] private float aimWeightSpeed = 2f;
-    [SerializeField] private InventoryObject inventory;
+    [SerializeField] private InventoryController inventory;
     [SerializeField] private ScreenManager screenManager;
 
     private Vector3 hitPos;

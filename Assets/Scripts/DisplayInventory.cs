@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using Unity.VisualScripting;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 
@@ -11,13 +9,15 @@ public class DisplayInventory : MonoBehaviour
 {
     public MouseItem mouseItem = new MouseItem();
     public GameObject inventoryPrefab;
-    public InventoryObject inventory;
+    public InventoryController inventory;
     public int X_START;
-    public int Y_START;
+    public float Y_START;
     public float X_SPACE_BETWEEN_ITEM;
     public int NUMBER_OF_COLUMN;
     public float Y_SPACE_BETWEEN_ITEM;
-    Dictionary<GameObject, InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
+
+    private Dictionary<GameObject, InventorySlot> itemsDisplayed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +34,7 @@ public class DisplayInventory : MonoBehaviour
     {
         foreach (KeyValuePair<GameObject, InventorySlot> _slot in itemsDisplayed)
         {
-            if (_slot.Value.ID >= 0)
+            if (_slot.Value?.ID >= 0)
             {
                 _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[_slot.Value.item.Id].uiDisplay;
                 _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);

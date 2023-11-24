@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
-using UnityEditor;
-using JetBrains.Annotations;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
+using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
-public class InventoryObject : ScriptableObject
+public class InventoryController : MonoBehaviour
 {
     public string savePath;
     public ItemDatabaseObject database;
     public Inventory Container;
+    [SerializeField] private LogController log;
 
     public void AddItem(Item _item, int _amount)
     {
@@ -80,8 +78,8 @@ public class InventoryObject : ScriptableObject
     }
 
     [ContextMenu("Load")]
-    public void Load() 
-    { 
+    public void Load()
+    {
         if (File.Exists(string.Concat(Application.persistentDataPath, savePath)))
         {
             //BinaryFormatter bf = new BinaryFormatter();
@@ -125,7 +123,7 @@ public class InventorySlot
         item = null;
         amount = 0;
     }
-    public InventorySlot(int _id,Item _item, int _amount)
+    public InventorySlot(int _id, Item _item, int _amount)
     {
         ID = _id;
         item = _item;
@@ -143,3 +141,4 @@ public class InventorySlot
         amount += value;
     }
 }
+

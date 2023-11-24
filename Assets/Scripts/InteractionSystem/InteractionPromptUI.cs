@@ -6,13 +6,13 @@ using UnityEngine;
 public class InteractionPromptUI : MonoBehaviour
 {
     private Camera _mainCam;
-    [SerializeField] private GameObject _uiPanel;
-    [SerializeField] private TextMeshProUGUI _promptText;
+    [SerializeField] private GameObject container;
+    [SerializeField] private TextMeshProUGUI promptText;
 
     private void Start()
     {
         _mainCam = Camera.main;
-        _uiPanel.SetActive(false);
+        container.SetActive(false);
     }
 
     private void LateUpdate()
@@ -25,9 +25,8 @@ public class InteractionPromptUI : MonoBehaviour
 
     public void SetUp(string promptText)
     {
-        Debug.Log($"O texto é: {promptText}");
-        _promptText.text = promptText;
-        _uiPanel.SetActive(true);
+        this.promptText.text = promptText;
+        container.SetActive(true);
         IsDisplayed = true;
     }
 
@@ -36,7 +35,7 @@ public class InteractionPromptUI : MonoBehaviour
         if (gameObject != null)
         {
             IsDisplayed = false;
-            _uiPanel.SetActive(false);
+            container.SetActive(false);
         }
     }
 }
