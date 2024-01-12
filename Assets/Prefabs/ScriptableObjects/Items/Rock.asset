@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Rock
   m_EditorClassIdentifier: 
   Id: 8
+  Name: Rock
+  Level: 0
   uiDisplay: {fileID: 21300000, guid: fa25c90a9bbb9ad4fa7bb92b680fec69, type: 3}
   type: 2
-  description: 
-  buffs: []
+  Description: 
+  recipe: []

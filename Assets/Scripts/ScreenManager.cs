@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScreenManager : MonoBehaviour
 {
     [SerializeField] private GameObject InventoryScreen;
+    [SerializeField] private Tooltip tooltip;
 
     public bool isInventoryOpen = false;
 
@@ -28,6 +29,7 @@ public class ScreenManager : MonoBehaviour
             {
                 InventoryScreen.SetActive(false);
                 isInventoryOpen = false;
+                tooltip.HideTooltip();
             }
             
         }

@@ -14,7 +14,7 @@ public class InventoryController : MonoBehaviour
 
     public void AddItem(Item _item, int _amount)
     {
-        if (_item.buffs.Length > 0)
+        if (_item.recipe.Length > 0)
         {
             SetEmptySlot(_item, _amount);
             return;
