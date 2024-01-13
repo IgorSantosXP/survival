@@ -24,6 +24,7 @@ public abstract class ItemObject : ScriptableObject
     public int Id;
     public string Name;
     public int Level;
+    public int CraftTime;
     public Sprite uiDisplay;
     public ItemType type;
     [TextArea(15,20)]

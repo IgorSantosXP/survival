@@ -15,6 +15,7 @@ MonoBehaviour:
   Id: 10
   Name: Stone Pickaxe
   Level: 1
+  CraftTime: 10
   uiDisplay: {fileID: 21300000, guid: ca01f068e07cf394a8dd126fcaaffd68, type: 3}
   type: 3
   Description: It's better than punching rocks.

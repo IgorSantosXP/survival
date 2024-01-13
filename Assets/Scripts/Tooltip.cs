@@ -68,13 +68,11 @@ public class Tooltip : MonoBehaviour
             recipeTooltip.recipeValue.text = $"{itemQty}/{itemObject.recipe[i].value}";
             if (itemQty >= itemObject.recipe[i].value)
             {
-                Debug.Log("Oi");
                 recipeTooltip.recipeValue.color = new Color(125/255f, 255/255f, 76/255f, 255/255f);
                 recipeTooltip.recipeName.color = new Color(125/255f, 255/255f, 76/255f, 255/255f);
             }
             else
             {
-                Debug.Log("Olá");
                 recipeTooltip.recipeValue.color = new Color(255/255f, 76/255f, 76/255f, 255/255f);
                 recipeTooltip.recipeName.color = new Color(255/255f, 76/255f, 76/255f, 255/255f);
             }
