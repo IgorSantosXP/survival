@@ -4,8 +4,6 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
-using static UnityEngine.Rendering.DebugUI;
 
 public class Tooltip : MonoBehaviour
 {
@@ -55,16 +53,8 @@ public class Tooltip : MonoBehaviour
             recipeTooltip.recipeImage.sprite = itemObject.recipe[i].resource.uiDisplay;
             recipeTooltip.recipeName.text = itemObject.recipe[i].resource.Name;
 
-            int itemQty = 0;
-            for (int j = 0; j < inventory.Container.Items.Length; j++)
-            {
-                if (inventory.Container.Items[j].ID == itemObject.recipe[i].resource.Id)
-                {
-                    itemQty += inventory.Container.Items[j].amount;
-                }
-            }
-            //FF4C4C
-            //    7DFF4C
+            int itemQty = inventory.GetItemAmount(itemObject.recipe[i].resource.Id);
+
             recipeTooltip.recipeValue.text = $"{itemQty}/{itemObject.recipe[i].value}";
             if (itemQty >= itemObject.recipe[i].value)
             {

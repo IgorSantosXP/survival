@@ -19,14 +19,7 @@ public class CraftManager : MonoBehaviour
         bool canCraftItem = true;
         for (int i = 0; i < item.recipe.Length; i++)
         {
-            int itemQty = 0;
-            for (int j = 0; j < inventory.Container.Items.Length; j++)
-            {
-                if (inventory.Container.Items[j].ID == item.recipe[i].resource.Id)
-                {
-                    itemQty += inventory.Container.Items[j].amount;
-                }
-            }
+            int itemQty = inventory.GetItemAmount(item.recipe[i].resource.Id);
 
             if (itemQty < item.recipe[i].value)
             {

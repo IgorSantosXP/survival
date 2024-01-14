@@ -203,5 +203,6 @@ public class PlayerController : MonoBehaviour
     private void OnApplicationQuit()
     {
         inventory.Container.Items = new InventorySlot[35];
+        inventory.QuickAccessContainer.Items = new InventorySlot[6];
     }
 }

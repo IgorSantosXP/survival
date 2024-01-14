@@ -4,18 +4,22 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using static UnityEditor.Progress;
 
 public class DisplayInventory : MonoBehaviour
 {
-    public MouseItem mouseItem = new MouseItem();
-    public GameObject inventoryPrefab;
-    public InventoryController inventory;
-    public int X_START;
-    public float Y_START;
-    public float X_SPACE_BETWEEN_ITEM;
-    public int NUMBER_OF_COLUMN;
-    public float Y_SPACE_BETWEEN_ITEM;
+    [SerializeField] private GameObject inventoryPrefab;
+    [SerializeField] private GameObject quickAccessPrefab;
+    [SerializeField] private InventoryController inventory;
+    [SerializeField] private int X_START;
+    [SerializeField] private float Y_START;
+    [SerializeField] private float X_SPACE_BETWEEN_ITEM;
+    [SerializeField] private int NUMBER_OF_COLUMN;
+    [SerializeField] private float Y_SPACE_BETWEEN_ITEM;
+    [SerializeField] private GameObject inventorySlotSpawner;
+    [SerializeField] private GameObject quickAccessSlotSpawner;
 
+    private MouseItem mouseItem = new MouseItem();
     private Dictionary<GameObject, InventorySlot> itemsDisplayed;
 
     // Start is called before the first frame update
@@ -53,7 +57,7 @@ public class DisplayInventory : MonoBehaviour
         itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
         for (int i = 0; i < inventory.Container.Items.Length; i++)
         {
-            var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
+            var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, inventorySlotSpawner.transform);
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
 
             AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnEnter(obj); });
@@ -63,6 +67,20 @@ public class DisplayInventory : MonoBehaviour
             AddEvent(obj, EventTriggerType.Drag, delegate { OnDrag(obj); });
 
             itemsDisplayed.Add(obj, inventory.Container.Items[i]);
+        }
+
+        for (int i = 0; i < inventory.QuickAccessContainer.Items.Length; i++)
+        {
+            var obj = Instantiate(quickAccessPrefab, Vector3.zero, Quaternion.identity, quickAccessSlotSpawner.transform);
+            obj.GetComponent<QuickAccessController>().InputKeyText.text = $"{i + 1}";
+
+            AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnEnter(obj); });
+            AddEvent(obj, EventTriggerType.PointerExit, delegate { OnExit(obj); });
+            AddEvent(obj, EventTriggerType.BeginDrag, delegate { OnDragStart(obj); });
+            AddEvent(obj, EventTriggerType.EndDrag, delegate { OnDragEnd(obj); });
+            AddEvent(obj, EventTriggerType.Drag, delegate { OnDrag(obj); });
+
+            itemsDisplayed.Add(obj, inventory.QuickAccessContainer.Items[i]);
         }
     }
 

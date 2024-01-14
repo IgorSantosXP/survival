@@ -4,19 +4,22 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 using UnityEngine;
+using Unity.VisualScripting;
+using static UnityEditor.Progress;
 
 public class InventoryController : MonoBehaviour
 {
-    public string savePath;
+    [SerializeField] private string savePath;
     public ItemDatabaseObject database;
     public Inventory Container;
+    public QuickAccess QuickAccessContainer;
     [SerializeField] private LogController log;
 
     public void AddItem(Item _item, int _amount)
     {
         if (_item.recipe.Length > 0)
         {
-            SetEmptySlot(_item, _amount);
+            SetEquippableItemEmptySlot(_item, _amount);
             return;
         }
 
@@ -25,6 +28,15 @@ public class InventoryController : MonoBehaviour
             if (Container.Items[i].ID == _item.Id)
             {
                 Container.Items[i].AddAmount(_amount);
+                return;
+            }
+        }
+
+        for (int i = 0; i < QuickAccessContainer.Items.Length; i++)
+        {
+            if (QuickAccessContainer.Items[i].ID == _item.Id)
+            {
+                QuickAccessContainer.Items[i].AddAmount(_amount);
                 return;
             }
         }
@@ -46,9 +58,41 @@ public class InventoryController : MonoBehaviour
                 return;
             }
         }
+
+        for (int i = 0; i < QuickAccessContainer.Items.Length; i++)
+        {
+            if (QuickAccessContainer.Items[i].ID == _item.Id)
+            {
+                QuickAccessContainer.Items[i].RemoveAmount(_amount);
+                return;
+            }
+        }
     }
 
-    public InventorySlot SetEmptySlot(Item _item, int _amount)
+    private InventorySlot SetEquippableItemEmptySlot(Item _item, int _amount)
+    {
+        for (int i = 0; i < QuickAccessContainer.Items.Length; i++)
+        {
+            if (QuickAccessContainer.Items[i].ID <= -1)
+            {
+                QuickAccessContainer.Items[i].UpdateSlot(_item.Id, _item, _amount);
+                return QuickAccessContainer.Items[i];
+            }
+        }
+
+        for (int i = 0; i < Container.Items.Length; i++)
+        {
+            if (Container.Items[i].ID <= -1)
+            {
+                Container.Items[i].UpdateSlot(_item.Id, _item, _amount);
+                return Container.Items[i];
+            }
+        }
+
+        return null;
+    }
+
+    private InventorySlot SetEmptySlot(Item _item, int _amount)
     {
         for (int i = 0; i < Container.Items.Length; i++)
         {
@@ -56,6 +100,15 @@ public class InventoryController : MonoBehaviour
             {
                 Container.Items[i].UpdateSlot(_item.Id, _item, _amount);
                 return Container.Items[i];
+            }
+        }
+
+        for (int i = 0; i < QuickAccessContainer.Items.Length; i++)
+        {
+            if (QuickAccessContainer.Items[i].ID <= -1)
+            {
+                QuickAccessContainer.Items[i].UpdateSlot(_item.Id, _item, _amount);
+                return QuickAccessContainer.Items[i];
             }
         }
 
@@ -76,8 +129,43 @@ public class InventoryController : MonoBehaviour
             if (Container.Items[i].item == _item)
             {
                 Container.Items[i].UpdateSlot(-1, null, 0);
+                return;
             }
         }
+
+        for (int i = 0; i < QuickAccessContainer.Items.Length; i++)
+        {
+            if (QuickAccessContainer.Items[i].item == _item)
+            {
+                QuickAccessContainer.Items[i].UpdateSlot(-1, null, 0);
+            }
+        }
+    }
+
+    public int GetItemAmount(int itemId)
+    {
+        Debug.Log($"itemID: {itemId}");
+        int itemAmount = 0;
+        for (int i = 0; i < Container.Items.Length; i++)
+        {
+            if (Container.Items[i].ID == itemId)
+            {
+                itemAmount += Container.Items[i].amount;
+            }
+        }
+
+        Debug.Log($"QuickAccessContainer.Items.Length: {QuickAccessContainer.Items.Length}");
+        for (int i = 0; i < QuickAccessContainer.Items.Length; i++)
+        {
+            Debug.Log($"QuickAccessContainer.Items[i].ID: {QuickAccessContainer.Items[i].ID}");
+            if (QuickAccessContainer.Items[i].ID == itemId)
+            {
+                itemAmount += QuickAccessContainer.Items[i].amount;
+                Debug.Log($"itemAmount: {itemAmount}");
+            }
+        }
+
+        return itemAmount;
     }
 
     [ContextMenu("Save")]
@@ -124,6 +212,12 @@ public class InventoryController : MonoBehaviour
 }
 
 [System.Serializable]
+public class QuickAccess
+{
+    public InventorySlot[] Items = new InventorySlot[6];
+}
+
+[System.Serializable]
 public class Inventory
 {
     public InventorySlot[] Items = new InventorySlot[35];
@@ -161,6 +255,11 @@ public class InventorySlot
 
     public void RemoveAmount(int value)
     {
+        if (amount == value)
+        {
+            UpdateSlot(-1, null, 0);
+            return;
+        }
         amount -= value;
     }
 }
