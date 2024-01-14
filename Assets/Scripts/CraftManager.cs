@@ -36,6 +36,7 @@ public class CraftManager : MonoBehaviour
         }
         if (canCraftItem)
         {
+            RemoveResources(item);
             CraftItem(itemGameObject, item);
         }
         else
@@ -43,6 +44,14 @@ public class CraftManager : MonoBehaviour
             GameObject warningMessageObj = Instantiate(warningMessage, warningMessageSpawner.transform);
             TextMeshProUGUI warningMessageText = warningMessageObj.GetComponentInChildren<TextMeshProUGUI>();
             warningMessageText.text = "Not enough resources!";
+        }
+    }
+
+    private void RemoveResources(ItemObject item)
+    {
+        for (int i = 0; i < item.recipe.Length; i++)
+        {
+            inventory.RemoveItemAmount(new Item(item.recipe[i].resource), item.recipe[i].value);
         }
     }
 

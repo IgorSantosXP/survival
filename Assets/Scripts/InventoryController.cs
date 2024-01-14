@@ -14,7 +14,6 @@ public class InventoryController : MonoBehaviour
 
     public void AddItem(Item _item, int _amount)
     {
-        Debug.Log("Oi1");
         if (_item.recipe.Length > 0)
         {
             SetEmptySlot(_item, _amount);
@@ -31,9 +30,26 @@ public class InventoryController : MonoBehaviour
         }
         SetEmptySlot(_item, _amount);
     }
+
+    public void RemoveItemAmount(Item _item, int _amount)
+    {
+        if (_item.recipe.Length > 0)
+        {
+            return;
+        }
+
+        for (int i = 0; i < Container.Items.Length; i++)
+        {
+            if (Container.Items[i].ID == _item.Id)
+            {
+                Container.Items[i].RemoveAmount(_amount);
+                return;
+            }
+        }
+    }
+
     public InventorySlot SetEmptySlot(Item _item, int _amount)
     {
-        Debug.Log("Oi2");
         for (int i = 0; i < Container.Items.Length; i++)
         {
             if (Container.Items[i].ID <= -1)
@@ -141,6 +157,11 @@ public class InventorySlot
     public void AddAmount(int value)
     {
         amount += value;
+    }
+
+    public void RemoveAmount(int value)
+    {
+        amount -= value;
     }
 }
 
