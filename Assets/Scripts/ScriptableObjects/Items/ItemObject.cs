@@ -30,6 +30,7 @@ public abstract class ItemObject : ScriptableObject
     [TextArea(15,20)]
     public string Description;
     public ItemRecipe[] recipe;
+    public GameObject itemPrefab;
 
     public Item CreateItem()
     {
@@ -44,12 +45,14 @@ public class Item
     public string Name;
     public int Id;
     public ItemRecipe[] recipe;
+    public GameObject itemRecipe;
 
     public Item(ItemObject item)
     {
         Name = item.name;
         Id = item.Id;
         recipe = new ItemRecipe[item.recipe.Length];
+        itemRecipe = item.itemPrefab;
 
         //for (int i = 0; i < recipe.Length; i++)
         //{
@@ -57,7 +60,7 @@ public class Item
         //    {
         //        attribute = item.buffs[i].attribute
         //    };
-            
+
         //}
     }
 }

@@ -229,6 +229,7 @@ public class InventorySlot
     public int ID = -1;
     public Item item;
     public int amount;
+    public GameObject slotPrefab;
     public InventorySlot()
     {
         ID = -1;

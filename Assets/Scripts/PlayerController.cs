@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float aimWeightSpeed = 2f;
     [SerializeField] private InventoryController inventory;
     [SerializeField] private ScreenManager screenManager;
+    [SerializeField] private GameObject handPosition;
 
     private Vector3 hitPos;
     private Vector3 inputDir;
@@ -28,6 +29,11 @@ public class PlayerController : MonoBehaviour
     private bool isCombatMode = false;
 
     private float combatModeTimer = 3f;
+
+    private GameObject equippedItem;
+    private GameObject equippedItemSlot;
+    private int equippedItemNum;
+    
 
     private void Update()
     {
@@ -78,8 +84,55 @@ public class PlayerController : MonoBehaviour
             inventory.Load();
         }
 
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            CheckItemAndEquip(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            CheckItemAndEquip(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            CheckItemAndEquip(3);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            CheckItemAndEquip(4);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            CheckItemAndEquip(5);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            CheckItemAndEquip(6);
+        }
+
         inputVector = inputVector.normalized;
         inputDir = new Vector3(inputVector.x, 0f, inputVector.y);
+    }
+
+    private void CheckItemAndEquip(int equippedItemNumValue)
+    {
+        if (equippedItemNum == equippedItemNumValue)
+            return;
+        equippedItemNum = equippedItemNumValue;
+        if (equippedItem != null)
+        {
+            Destroy(equippedItem);
+        }
+        if (equippedItemSlot != null)
+        {
+            equippedItemSlot.SetActive(false);
+        }
+        if (inventory.QuickAccessContainer.Items[equippedItemNumValue-1].ID >= 0 && inventory.QuickAccessContainer.Items[equippedItemNumValue-1].item.recipe.Length > 0)
+        {
+            equippedItem = Instantiate(inventory.QuickAccessContainer.Items[equippedItemNumValue-1].item.itemRecipe, handPosition.transform);
+            GameObject selectedItem = inventory.QuickAccessContainer.Items[equippedItemNumValue - 1].slotPrefab.GetComponent<QuickAccessController>().SelectedItem;
+            selectedItem.SetActive(true);
+            equippedItemSlot = selectedItem;
+        }
     }
 
     private void SetMovement()

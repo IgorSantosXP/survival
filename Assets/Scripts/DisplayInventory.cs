@@ -80,6 +80,7 @@ public class DisplayInventory : MonoBehaviour
             AddEvent(obj, EventTriggerType.EndDrag, delegate { OnDragEnd(obj); });
             AddEvent(obj, EventTriggerType.Drag, delegate { OnDrag(obj); });
 
+            inventory.QuickAccessContainer.Items[i].slotPrefab = obj;
             itemsDisplayed.Add(obj, inventory.QuickAccessContainer.Items[i]);
         }
     }

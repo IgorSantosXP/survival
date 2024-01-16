@@ -24,3 +24,5 @@ MonoBehaviour:
     value: 50
   - resource: {fileID: 11400000, guid: 9963b4fabfe10804a9ebbc38cd985dcf, type: 2}
     value: 100
+  itemPrefab: {fileID: 2295482463287575381, guid: 3c6f27a9ab443c249856c77843414a05,
+    type: 3}
