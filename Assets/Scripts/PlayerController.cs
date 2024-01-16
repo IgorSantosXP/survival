@@ -128,8 +128,9 @@ public class PlayerController : MonoBehaviour
         }
         if (inventory.QuickAccessContainer.Items[equippedItemNumValue-1].ID >= 0 && inventory.QuickAccessContainer.Items[equippedItemNumValue-1].item.recipe.Length > 0)
         {
-            equippedItem = Instantiate(inventory.QuickAccessContainer.Items[equippedItemNumValue-1].item.itemRecipe, handPosition.transform);
-            GameObject selectedItem = inventory.QuickAccessContainer.Items[equippedItemNumValue - 1].slotPrefab.GetComponent<QuickAccessController>().SelectedItem;
+            InventorySlot slot = inventory.QuickAccessContainer.Items[equippedItemNumValue - 1];
+            equippedItem = Instantiate(slot.item.itemRecipe, handPosition.transform);
+            GameObject selectedItem = slot.slotPrefab.GetComponent<QuickAccessController>().SelectedItem;
             selectedItem.SetActive(true);
             equippedItemSlot = selectedItem;
         }
