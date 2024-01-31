@@ -86,10 +86,57 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a74cf3cb07b32564cb758bb9fcabfc51,
         type: 3}
       propertyPath: m_Name
-      value: machadoum Variant
+      value: StoneAxe
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a74cf3cb07b32564cb758bb9fcabfc51,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8094832173205973493}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a74cf3cb07b32564cb758bb9fcabfc51,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4685091603694541354}
   m_SourcePrefab: {fileID: 100100000, guid: a74cf3cb07b32564cb758bb9fcabfc51, type: 3}
+--- !u!1 &2295482463287575381 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a74cf3cb07b32564cb758bb9fcabfc51,
+    type: 3}
+  m_PrefabInstance: {fileID: 1376510434808970756}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &8094832173205973493
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2295482463287575381}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0839546, y: 3.7516153, z: 1}
+  m_Center: {x: 0.08148997, y: 0.7757424, z: -0.0000005754366}
+--- !u!114 &4685091603694541354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2295482463287575381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d981cef8ca82f34d8e6fd1fc4aaa628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

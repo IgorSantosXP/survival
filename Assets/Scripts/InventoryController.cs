@@ -144,7 +144,6 @@ public class InventoryController : MonoBehaviour
 
     public int GetItemAmount(int itemId)
     {
-        Debug.Log($"itemID: {itemId}");
         int itemAmount = 0;
         for (int i = 0; i < Container.Items.Length; i++)
         {
@@ -154,14 +153,11 @@ public class InventoryController : MonoBehaviour
             }
         }
 
-        Debug.Log($"QuickAccessContainer.Items.Length: {QuickAccessContainer.Items.Length}");
         for (int i = 0; i < QuickAccessContainer.Items.Length; i++)
         {
-            Debug.Log($"QuickAccessContainer.Items[i].ID: {QuickAccessContainer.Items[i].ID}");
             if (QuickAccessContainer.Items[i].ID == itemId)
             {
                 itemAmount += QuickAccessContainer.Items[i].amount;
-                Debug.Log($"itemAmount: {itemAmount}");
             }
         }
 

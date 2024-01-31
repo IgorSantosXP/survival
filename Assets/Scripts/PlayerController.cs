@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InventoryController inventory;
     [SerializeField] private ScreenManager screenManager;
     [SerializeField] private GameObject handPosition;
+    [SerializeField] private LayerMask layerMask;
 
     private Vector3 hitPos;
     private Vector3 inputDir;
@@ -24,11 +25,14 @@ public class PlayerController : MonoBehaviour
 
     private int inputXHash = Animator.StringToHash("InputX");
     private int inputYHash = Animator.StringToHash("InputY");
+    private int toolHit = Animator.StringToHash("ToolHit");
     private int punch = Animator.StringToHash("Punch");
 
     private bool isCombatMode = false;
+    public bool IsHitting = false;
+    public bool DetectCollision = false;
 
-    private float combatModeTimer = 3f;
+    private float combatModeTimer = 5f;
 
     private GameObject equippedItem;
     private GameObject equippedItemSlot;
@@ -37,12 +41,39 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        SetInput();
-        SetDirection();
-        SetMovement();
+        SetMouseInput();
         SetMousePosition();
-        SetTargetLook();
         SetCombatMode();
+        if (!IsHitting)
+        {
+            SetInput();
+            SetDirection();
+            SetMovement();
+            SetTargetLook();
+        }
+    }
+
+    private void SetMouseInput()
+    {
+        if (!screenManager.isInventoryOpen)
+        {
+            
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                isCombatMode = true;
+                combatModeTimer = 3f;
+                if (equippedItem != null)
+                {
+                    animator.SetTrigger(toolHit);
+                }
+                else
+                {
+                    animator.SetTrigger(punch);
+                }
+                
+            }
+           
+        }
     }
 
     private void SetInput()
@@ -64,15 +95,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             inputVector.x = +1;
-        }
-        if (!screenManager.isInventoryOpen)
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                isCombatMode = true;
-                combatModeTimer = 3f;
-                animator.SetTrigger(punch);
-            }
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -196,7 +218,7 @@ public class PlayerController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 100))
+        if (Physics.Raycast(ray, out hit, 100, layerMask))
         {
             hitPos = new Vector3(hit.point.x, 0f, hit.point.z);
         }
@@ -222,26 +244,23 @@ public class PlayerController : MonoBehaviour
 
     private void SetCombatMode()
     {
-        combatModeTimer -= Time.deltaTime;
-
-        if (combatModeTimer <= 0)
+        if (!IsHitting)
         {
-            isCombatMode = false;
+            combatModeTimer -= Time.deltaTime;
+
+            if (combatModeTimer <= 0)
+            {
+                isCombatMode = false;
+            }
         }
+
         if (isCombatMode)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, 100))
-            {
-                hitPos = hit.point;
-            }
-
             Vector3 lookDir = hitPos - transform.position;
             lookDir.y = 0;
             transform.LookAt(transform.position + lookDir, Vector3.up);
         }
+
     }
 
     private void OnTriggerEnter(Collider other)

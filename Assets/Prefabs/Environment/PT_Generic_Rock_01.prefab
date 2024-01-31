@@ -384,6 +384,66 @@ PrefabInstance:
       propertyPath: m_Name
       value: InteractableObjectCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2074773570402026740, guid: f4795cbf1f1bb3649bfea3b3304379a6,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2074773570402026740, guid: f4795cbf1f1bb3649bfea3b3304379a6,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2074773570402026740, guid: f4795cbf1f1bb3649bfea3b3304379a6,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2074773570402026740, guid: f4795cbf1f1bb3649bfea3b3304379a6,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2074773570402026740, guid: f4795cbf1f1bb3649bfea3b3304379a6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 583.105
+      objectReference: {fileID: 0}
+    - target: {fileID: 2074773570402026740, guid: f4795cbf1f1bb3649bfea3b3304379a6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3970939940418971311, guid: f4795cbf1f1bb3649bfea3b3304379a6,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3970939940418971311, guid: f4795cbf1f1bb3649bfea3b3304379a6,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3970939940418971311, guid: f4795cbf1f1bb3649bfea3b3304379a6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3970939940418971311, guid: f4795cbf1f1bb3649bfea3b3304379a6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4224133160759560907, guid: f4795cbf1f1bb3649bfea3b3304379a6,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4224133160759560907, guid: f4795cbf1f1bb3649bfea3b3304379a6,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8551870443354920085, guid: f4795cbf1f1bb3649bfea3b3304379a6,
         type: 3}
       propertyPath: m_Pivot.x
