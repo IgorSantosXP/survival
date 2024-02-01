@@ -7,7 +7,7 @@ public class Collector : MonoBehaviour
     private PlayerController playerController;
     private InventoryController inventory;
 
-    private void Awake()
+    private void Start()
     {
         playerController = GetComponentInParent<PlayerController>();
         inventory = GetComponentInParent<InventoryController>();
