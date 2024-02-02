@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class TreeObject : MonoBehaviour, ICollectable
+public class RockObject : MonoBehaviour, ICollectable
 {
     [SerializeField] private GameObject _objectToSpawn;
     [SerializeField] private string _name;
@@ -34,7 +33,6 @@ public class TreeObject : MonoBehaviour, ICollectable
         _resourceAmount -= _resourceAmountByHit;
         if (_hitsToDestroy <= 0)
         {
-            Instantiate(_objectToSpawn, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }

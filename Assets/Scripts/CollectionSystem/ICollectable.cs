@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CollectableType
+{
+    Tree,
+    Rock
+}
+
 public interface ICollectable
 {
     public GameObject ObjectToSpawn { get; }
@@ -10,6 +16,7 @@ public interface ICollectable
     public int ResourceAmount { get; }
     public int ResourceAmountByHit { get; }
     public int HitsToDestroy { get; }
+    public CollectableType type { get; }
     public void Hit();
     public int GetAmount();
 }

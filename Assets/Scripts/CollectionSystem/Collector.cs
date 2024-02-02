@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Collector : MonoBehaviour
 {
+    [SerializeField] private CollectableType collectableType;
     private PlayerController playerController;
     private InventoryController inventory;
 
@@ -18,10 +19,9 @@ public class Collector : MonoBehaviour
         {
             if (playerController != null && playerController.DetectCollision)
             {
-                TreeObject collectable = other.GetComponent<TreeObject>();
-                if (collectable != null)
+                ICollectable collectable = other.GetComponent<ICollectable>();
+                if (collectable != null && collectable.type == collectableType)
                 {
-                    
                     if (inventory != null)
                     {
                         int resourceAmount = collectable.GetAmount();
