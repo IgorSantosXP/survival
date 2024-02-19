@@ -23,11 +23,13 @@ public class Tab : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IP
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        Debug.Log("OnPointerEnter2");
         tabGroup.OnTabEnter(this);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        Debug.Log("OnPointerExit2");
         tabGroup.OnTabExit(this);
     }
 }

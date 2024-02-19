@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Tooltip : MonoBehaviour
 {
+    [SerializeField] private PlayerController playerController;
     [SerializeField] private RectTransform backgroundRectTransform;
     [SerializeField] private RectTransform canvasRectTransform;
     [SerializeField] private TextMeshProUGUI itemName;
@@ -80,11 +81,13 @@ public class Tooltip : MonoBehaviour
 
     public void OnTooltipEnter(ItemObject itemObject)
     {
+        playerController.InventoryInteraction = true;
         ShowTooltip(itemObject);
     }
 
     public void OnTooltipExit()
     {
+        playerController.InventoryInteraction = false;
         HideTooltip();
     }
 }

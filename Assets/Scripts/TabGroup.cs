@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TabGroup : MonoBehaviour
 {
+    [SerializeField] private PlayerController playerController;
     public List<Tab> tabButtons;
     public Color tabIdle;
     public Color tabHover;
@@ -24,6 +25,7 @@ public class TabGroup : MonoBehaviour
 
     public void OnTabEnter(Tab tabButton)
     {
+        playerController.InventoryInteraction = true;
         ResetTabs();
         if (selectedTab == null || tabButton != selectedTab) 
         {
@@ -33,6 +35,7 @@ public class TabGroup : MonoBehaviour
 
     public void OnTabExit(Tab tabButton)
     {
+        playerController.InventoryInteraction = false;
         ResetTabs();
     }
 

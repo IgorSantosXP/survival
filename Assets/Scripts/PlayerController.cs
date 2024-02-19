@@ -37,6 +37,9 @@ public class PlayerController : MonoBehaviour
     private GameObject equippedItem;
     private GameObject equippedItemSlot;
     private int equippedItemNum;
+
+    public bool InventoryInteraction = false;
+    public bool QuickAccessInteraction = false;
     
 
     private void Update()
@@ -55,9 +58,8 @@ public class PlayerController : MonoBehaviour
 
     private void SetMouseInput()
     {
-        if (!screenManager.isInventoryOpen)
+        if (!QuickAccessInteraction && !InventoryInteraction)
         {
-            
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 isCombatMode = true;
@@ -70,9 +72,8 @@ public class PlayerController : MonoBehaviour
                 {
                     animator.SetTrigger(punch);
                 }
-                
+
             }
-           
         }
     }
 
@@ -95,15 +96,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             inputVector.x = +1;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            inventory.Save();
-        }
-        if (Input.GetKeyDown(KeyCode.KeypadEnter))
-        {
-            inventory.Load();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))

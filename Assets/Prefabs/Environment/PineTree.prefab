@@ -333,7 +333,7 @@ CapsuleCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.21155918
@@ -359,6 +359,7 @@ MonoBehaviour:
   _resourceAmount: 500
   _resourceAmountByHit: 15
   _hitsToDestroy: 1
+  _type: 0
 --- !u!95 &4734747354455073412
 Animator:
   serializedVersion: 5
