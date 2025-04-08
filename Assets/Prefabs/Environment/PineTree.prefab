@@ -332,8 +332,8 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 1
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.21155918
@@ -358,7 +358,7 @@ MonoBehaviour:
   _item: {fileID: 11400000, guid: 9963b4fabfe10804a9ebbc38cd985dcf, type: 2}
   _resourceAmount: 500
   _resourceAmountByHit: 15
-  _hitsToDestroy: 1
+  _hitsToDestroy: 10
   _type: 0
 --- !u!95 &4734747354455073412
 Animator:
@@ -373,7 +373,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: cfe7ebd3caffe0647b5c3b3a81ebbb14, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
