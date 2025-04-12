@@ -8,8 +8,10 @@ public class Shrub : MonoBehaviour, IInteractable
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject shrubDead;
     [SerializeField] private ItemObject item;
+    [SerializeField] private GameObject spawner;
     public string InteractionPrompt => _prompt;
     public ItemObject Item => item;
+    public GameObject Spawner => spawner;
     private bool isInteracting = false;
     private int minAmountItem = 10;
     private int maxAmountItem = 16;

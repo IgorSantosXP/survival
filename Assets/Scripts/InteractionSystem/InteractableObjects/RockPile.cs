@@ -7,8 +7,10 @@ public class RockPile : MonoBehaviour, IInteractable
     [SerializeField] private string _prompt;
     [SerializeField] private Animator animator;
     [SerializeField] private ItemObject item;
+    [SerializeField] private GameObject spawner;
     public string InteractionPrompt => _prompt;
     public ItemObject Item => item;
+    public GameObject Spawner => spawner;
     private bool isInteracting = false;
     private int minAmountItem = 10;
     private int maxAmountItem = 18;

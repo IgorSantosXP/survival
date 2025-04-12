@@ -330,6 +330,7 @@ MonoBehaviour:
   _prompt: Rock
   animator: {fileID: 9067224912288572771}
   item: {fileID: 11400000, guid: ce36939cfdb3c7b43bbbcd1a1cf87ec5, type: 2}
+  spawner: {fileID: 5983147566659238041, guid: 51d79a222d67da746b3cc04d0b363627, type: 3}
 --- !u!135 &8394314193046020825
 SphereCollider:
   m_ObjectHideFlags: 0

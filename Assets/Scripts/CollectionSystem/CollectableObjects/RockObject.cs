@@ -11,6 +11,7 @@ public class RockObject : MonoBehaviour, ICollectable
     [SerializeField] private int _resourceAmountByHit;
     [SerializeField] private int _hitsToDestroy;
     [SerializeField] private CollectableType _type;
+    [SerializeField] private GameObject spawner;
     private Animator animator;
 
     public GameObject ObjectToSpawn => _objectToSpawn;
@@ -33,6 +34,7 @@ public class RockObject : MonoBehaviour, ICollectable
         _resourceAmount -= _resourceAmountByHit;
         if (_hitsToDestroy <= 0)
         {
+            Instantiate(spawner, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }

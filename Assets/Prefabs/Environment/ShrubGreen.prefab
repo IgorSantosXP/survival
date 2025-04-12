@@ -251,6 +251,7 @@ MonoBehaviour:
   shrubDead: {fileID: 1782283015456589676, guid: 1067a26ade0d1b04794c287c1ce6faf5,
     type: 3}
   item: {fileID: 11400000, guid: 1886fe6bc83187e459763560ce0e2405, type: 2}
+  spawner: {fileID: 7993928974143105164, guid: 8b646f61f28d20e4d96174d929ce3484, type: 3}
 --- !u!136 &7664944640114504661
 CapsuleCollider:
   m_ObjectHideFlags: 0

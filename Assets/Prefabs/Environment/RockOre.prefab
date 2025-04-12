@@ -188,6 +188,7 @@ MonoBehaviour:
   _resourceAmountByHit: 15
   _hitsToDestroy: 10
   _type: 1
+  spawner: {fileID: 7993928974143105164, guid: d406f55c5cded684b89484c76a77056c, type: 3}
 --- !u!95 &9160618712022927978
 Animator:
   serializedVersion: 5

@@ -330,6 +330,7 @@ MonoBehaviour:
   _prompt: Shrub Dead
   animator: {fileID: 3634465737761678296}
   item: {fileID: 11400000, guid: 9963b4fabfe10804a9ebbc38cd985dcf, type: 2}
+  spawner: {fileID: 7993928974143105164, guid: 8b646f61f28d20e4d96174d929ce3484, type: 3}
 --- !u!95 &3634465737761678296
 Animator:
   serializedVersion: 5

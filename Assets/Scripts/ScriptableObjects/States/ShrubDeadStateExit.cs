@@ -19,6 +19,10 @@ public class ShrubDeadStateExit : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        GameObject spawnerObject = animator.gameObject.GetComponent<IInteractable>().Spawner;
+        if (spawnerObject != null) {
+            Instantiate(spawnerObject, animator.gameObject.transform.position, animator.gameObject.transform.rotation);
+        }
         Destroy(animator.gameObject);
     }
 
