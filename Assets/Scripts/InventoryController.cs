@@ -6,7 +6,6 @@ public class InventoryController : MonoBehaviour
     public ItemDatabaseObject database;
     public Inventory Container;
     public QuickAccess QuickAccessContainer;
-    [SerializeField] private LogController log;
 
     public void AddItem(Item _item, int _amount)
     {

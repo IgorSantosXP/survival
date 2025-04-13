@@ -21,13 +21,11 @@ public class DisplayInventory : MonoBehaviour
     private MouseItem mouseItem = new MouseItem();
     private Dictionary<GameObject, InventorySlot> itemsDisplayed;
 
-    // Start is called before the first frame update
     void Start()
     {
         CreateSlots();
     }
 
-    // Update is called once per frame
     void Update()
     {
         UpdateSlots();
