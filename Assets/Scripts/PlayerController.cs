@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float retargetSpeed = 5f;
     [SerializeField] private float aimWeightSpeed = 2f;
     [SerializeField] private InventoryController inventory;
-    [SerializeField] private ScreenManager screenManager;
     [SerializeField] private GameObject handPosition;
     [SerializeField] private LayerMask layerMask;
 
@@ -58,6 +57,7 @@ public class PlayerController : MonoBehaviour
 
     private void SetMouseInput()
     {
+        if (ScreenManager.Instance.IsOptionsOpen()) return;
         if (!QuickAccessInteraction && !InventoryInteraction)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -81,46 +81,38 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 inputVector = new Vector2(0, 0);
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            inputVector.y = +1;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            inputVector.y = -1;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            inputVector.x = -1;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            inputVector.x = +1;
-        }
+        if (!ScreenManager.Instance.IsOptionsOpen()) {
+            if (Input.GetKey(KeyCode.W)) {
+                inputVector.y = +1;
+            }
+            if (Input.GetKey(KeyCode.S)) {
+                inputVector.y = -1;
+            }
+            if (Input.GetKey(KeyCode.A)) {
+                inputVector.x = -1;
+            }
+            if (Input.GetKey(KeyCode.D)) {
+                inputVector.x = +1;
+            }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            CheckItemAndEquip(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            CheckItemAndEquip(2);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            CheckItemAndEquip(3);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            CheckItemAndEquip(4);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            CheckItemAndEquip(5);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            CheckItemAndEquip(6);
+            if (Input.GetKeyDown(KeyCode.Alpha1)) {
+                CheckItemAndEquip(1);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2)) {
+                CheckItemAndEquip(2);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3)) {
+                CheckItemAndEquip(3);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4)) {
+                CheckItemAndEquip(4);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha5)) {
+                CheckItemAndEquip(5);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha6)) {
+                CheckItemAndEquip(6);
+            }
         }
 
         inputVector = inputVector.normalized;
