@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   environmentAudioSource: {fileID: 550518868}
   sfxAudioSource: {fileID: 1693270796}
-  playerAudioSource: {fileID: 106597687}
+  playerSFXAudioSource: {fileID: 106597687}
   environmentClip: {fileID: 8300000, guid: 4111b72ba979d774494cc3a088faeafd, type: 3}
 --- !u!4 &8339868
 Transform:
@@ -1105,7 +1105,8 @@ AudioSource:
   m_GameObject: {fileID: 106597680}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -9003012770962141600, guid: 8d0a36c308fe3f34c9415f9221dfa925,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1597,7 +1598,8 @@ AudioSource:
   m_GameObject: {fileID: 550518867}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5824400254149862343, guid: 8d0a36c308fe3f34c9415f9221dfa925,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -3833,7 +3835,8 @@ AudioSource:
   m_GameObject: {fileID: 1693270795}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2816600356331702925, guid: 8d0a36c308fe3f34c9415f9221dfa925,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -4639,7 +4642,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903899419}
-  m_LocalRotation: {x: 0.33618647, y: -0.000000016204883, z: 0.00000000578455, w: 0.9417955}
+  m_LocalRotation: {x: 0.33618647, y: 0.000000016204897, z: -0.000000005784555, w: 0.9417955}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

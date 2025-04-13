@@ -7,12 +7,13 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance;
     [SerializeField] private AudioSource environmentAudioSource;
     [SerializeField] private AudioSource sfxAudioSource;
-    [SerializeField] private AudioSource playerAudioSource;
+    [SerializeField] private AudioSource playerSFXAudioSource;
     [SerializeField] private AudioClip environmentClip;
     
     private const string PLAYER_PREFS_MASTER_VOLUME = "MasterVolume";
     private const string PLAYER_PREFS_ENVIRONMENT_VOLUME = "EnvironmentVolume";
     private const string PLAYER_PREFS_SFX_VOLUME = "SFXVolume";
+    private const string PLAYER_PREFS_PLAYER_SFX_VOLUME = "PlayerSFXVolume";
 
     private void Awake() {
         if (Instance != null) {
@@ -34,32 +35,40 @@ public class SoundManager : MonoBehaviour
     }
 
     public void PlayPlayerSound(AudioClip clip) {
-        playerAudioSource.clip = clip;
-        playerAudioSource.Play();
+        playerSFXAudioSource.clip = clip;
+        playerSFXAudioSource.Play();
     }
 
-    public void SetPlayerMasterVolume(float value) {
+    public void SetMasterVolume(float value) {
         PlayerPrefs.SetFloat(PLAYER_PREFS_MASTER_VOLUME, value);
     }
 
-    public void SetPlayerMusicVolume(float value) {
+    public void SetEnvironmentVolume(float value) {
         PlayerPrefs.SetFloat(PLAYER_PREFS_ENVIRONMENT_VOLUME, value);
     }
 
-    public void SetPlayerSFXVolume(float value) {
+    public void SetSFXVolume(float value) {
         PlayerPrefs.SetFloat(PLAYER_PREFS_SFX_VOLUME, value);
     }
 
-    public float LoadPlayerMasterVolume() {
+    public void SetPlayerSFXVolume(float value) {
+        PlayerPrefs.SetFloat(PLAYER_PREFS_PLAYER_SFX_VOLUME, value);
+    }
+
+    public float LoadMasterVolume() {
         return PlayerPrefs.GetFloat(PLAYER_PREFS_MASTER_VOLUME, 0.6f);
     }
 
-    public float LoadPlayerMusicVolume() {
+    public float LoadEnvironmentVolume() {
         return PlayerPrefs.GetFloat(PLAYER_PREFS_ENVIRONMENT_VOLUME, 0.6f);
     }
 
-    public float LoadPlayerSFXVolume() {
+    public float LoadSFXVolume() {
         return PlayerPrefs.GetFloat(PLAYER_PREFS_SFX_VOLUME, 0.6f);
+    }
+
+    public float LoadPlayerSFXVolume() {
+        return PlayerPrefs.GetFloat(PLAYER_PREFS_PLAYER_SFX_VOLUME, 0.6f);
     }
 }
 
@@ -77,5 +86,6 @@ public enum AudioMixerParams {
     None,
     MasterVolume,
     EnvironmentVolume,
-    SFXVolume
+    SFXVolume,
+    PlayerSFXVolume
 }
