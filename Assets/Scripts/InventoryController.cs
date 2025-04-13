@@ -1,11 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization;
 using UnityEngine;
-using Unity.VisualScripting;
-using static UnityEditor.Progress;
 
 public class InventoryController : MonoBehaviour
 {
