@@ -13,6 +13,7 @@ public class RockObject : MonoBehaviour, ICollectable
     [SerializeField] private CollectableType _type;
     [SerializeField] private GameObject spawner;
     private Animator animator;
+    private SoundEffect soundEffect = SoundEffect.HitRock;
 
     public GameObject ObjectToSpawn => _objectToSpawn;
     public string Name => _name;
@@ -27,8 +28,14 @@ public class RockObject : MonoBehaviour, ICollectable
         animator = GetComponent<Animator>();
     }
 
+    private void PlaySound() {
+        AudioClip audioClip = Resources.Load<AudioClip>($"Sounds/SFX/{soundEffect}");
+        SoundManager.Instance.PlaySFX(audioClip);
+    }
+
     public void Hit()
     {
+        PlaySound();
         animator.SetTrigger("Hit");
         _hitsToDestroy--;
         _resourceAmount -= _resourceAmountByHit;

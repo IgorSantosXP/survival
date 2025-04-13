@@ -161,32 +161,8 @@ public class PlayerController : MonoBehaviour
 
         moveDir = cameraForward * inputDir.z + cameraRight * inputDir.x;
         float moveDistance = moveSpeed * Time.deltaTime;
-        //float playerRadius = .5f;
-        //float playerHeight = 2f;
-        //bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDir, moveDistance);
 
-        //if (!canMove)
-        //{
-        //    Vector3 moveDirX = new Vector3(moveDir.x, 0, 0).normalized;
-        //    canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirX, moveDistance);
-        //    if (canMove)
-        //    {
-        //        moveDir = moveDirX;
-        //    } else
-        //    {
-        //        Vector3 moveDirZ = new Vector3(0, 0, moveDir.z).normalized;
-        //        canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirZ, moveDistance);
-
-        //        if (canMove)
-        //        {
-        //            moveDir = moveDirZ;
-        //        }
-        //    }
-        //}
-        //if (canMove)
-        //{
-            transform.position += moveDir * moveDistance;
-        //}
+        transform.position += moveDir * moveDistance;
     }
 
     private void SetDirection()
@@ -202,6 +178,14 @@ public class PlayerController : MonoBehaviour
         if (!isCombatMode)
         {
             transform.forward = Vector3.Slerp(transform.forward, moveDir, rotateSpeed * Time.deltaTime);
+        }
+
+        if (Mathf.Abs(animator.GetFloat(inputXHash)) < 0.01f) {
+            animator.SetFloat(inputXHash, 0f);
+        }
+
+        if (Mathf.Abs(animator.GetFloat(inputYHash)) < 0.01f) {
+            animator.SetFloat(inputYHash, 0f);
         }
     }
 

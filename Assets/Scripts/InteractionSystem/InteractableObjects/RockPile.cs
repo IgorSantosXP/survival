@@ -14,11 +14,18 @@ public class RockPile : MonoBehaviour, IInteractable
     private bool isInteracting = false;
     private int minAmountItem = 10;
     private int maxAmountItem = 18;
+    private SoundEffect soundEffect = SoundEffect.GrabRockPile;
+
+    private void PlaySound() {
+        AudioClip audioClip = Resources.Load<AudioClip>($"Sounds/SFX/{soundEffect}");
+        SoundManager.Instance.PlaySFX(audioClip);
+    }
 
     public bool Interact(Interactor interactor)
     {
         if (!isInteracting)
         {
+            PlaySound();
             animator.SetTrigger("RockPileInteract");
             isInteracting = true;
         }

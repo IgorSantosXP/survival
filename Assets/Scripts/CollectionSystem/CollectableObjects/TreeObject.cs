@@ -13,6 +13,7 @@ public class TreeObject : MonoBehaviour, ICollectable
     [SerializeField] private int _hitsToDestroy;
     [SerializeField] private CollectableType _type;
     private Animator animator;
+    private SoundEffect soundEffect = SoundEffect.HitTree;
 
     public GameObject ObjectToSpawn => _objectToSpawn;
     public string Name => _name;
@@ -27,8 +28,14 @@ public class TreeObject : MonoBehaviour, ICollectable
         animator = GetComponent<Animator>();
     }
 
+    private void PlaySound() {
+        AudioClip audioClip = Resources.Load<AudioClip>($"Sounds/SFX/{soundEffect}");
+        SoundManager.Instance.PlaySFX(audioClip);
+    }
+
     public void Hit()
     {
+        PlaySound();
         animator.SetTrigger("Hit");
         _hitsToDestroy--;
         _resourceAmount -= _resourceAmountByHit;

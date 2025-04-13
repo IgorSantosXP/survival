@@ -14,11 +14,18 @@ public class Rock : MonoBehaviour, IInteractable
     private bool isInteracting = false;
     private int minAmountItem = 2;
     private int maxAmountItem = 8;
+    private SoundEffect soundEffect = SoundEffect.GrabRock;
+
+    private void PlaySound() {
+        AudioClip audioClip = Resources.Load<AudioClip>($"Sounds/SFX/{soundEffect}");
+        SoundManager.Instance.PlaySFX(audioClip);
+    }
 
     public bool Interact(Interactor interactor)
     {
         if (!isInteracting)
         {
+            PlaySound();
             animator.SetTrigger("RockInteract");
             isInteracting = true;
         }
